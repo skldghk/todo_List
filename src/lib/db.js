@@ -9,7 +9,6 @@ export async function connectToDatabase() {
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
     });
-    console.log('Database connected successfully');
     return connection;
   } catch (error) {
     console.error('Failed to connect to the database:', error);

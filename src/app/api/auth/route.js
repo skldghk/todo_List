@@ -47,7 +47,6 @@ export async function POST(req) {
         // JWT 토큰 생성
         const token = generateToken({ id: user.id, email: user.email });
 
-        console.log('Generated token:', token); // 토큰 생성 확인
         return NextResponse.json({ token }); // 토큰 반환
     } catch (error) {
         console.error('Error logging in:', error);

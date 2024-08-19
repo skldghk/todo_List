@@ -5,7 +5,6 @@ import { useAuth } from '@/context/AuthContext';
 const loadTasksFromLocalStorage = (user) => {
   if (typeof window !== 'undefined' && user) {
     const savedTasks = localStorage.getItem(`tasks_${user.email}`);
-    console.log('Loaded tasks from localStorage:', savedTasks); // 불러온 데이터 확인
     return savedTasks ? JSON.parse(savedTasks) : [];
   }
   return [];
@@ -13,7 +12,6 @@ const loadTasksFromLocalStorage = (user) => {
 
 const saveTasksToLocalStorage = (user, tasks) => {
   if (typeof window !== 'undefined' && user) {
-    console.log('Saving tasks to localStorage:', tasks); // 저장할 데이터 확인
     localStorage.setItem(`tasks_${user.email}`, JSON.stringify(tasks));
   }
 };
@@ -26,7 +24,6 @@ export default function TodoPage() {
   useEffect(() => {
     if (user) {
       const loadedTasks = loadTasksFromLocalStorage(user);
-      console.log('Tasks loaded after login:', loadedTasks);
       setTasks(loadedTasks);
     }
   }, [user]);
